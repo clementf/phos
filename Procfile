@@ -1,3 +1,3 @@
-web: sudo ruby lib/app.rb
+web: ruby lib/app.rb -p ${PORT:-3000}
 scheduler: bundle exec clockwork lib/scheduler.rb
-leds: sudo python -u lib/leds/leds_listener.py
+leds: python -u lib/leds/leds_listener.py

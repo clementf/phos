@@ -5,7 +5,6 @@ require 'json'
 configure { set :server, :puma }
 
 set :bind, '0.0.0.0'
-set :port, 80
 set :root, 'lib/app'
 
 get '/' do
