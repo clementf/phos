@@ -1,7 +1,7 @@
 {
-  "name": "react-sinatra-starter",
-  "version": "1.0.1",
-  "description": "example sinatra-react app",
+  "name": "phos",
+  "version": "0.1.0",
+  "description": "Control your led strip over the web",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --content-base lib/app/views --hot --inline",
@@ -10,9 +10,10 @@
     "lint:watch": "esw -w src/**",
     "test": "mocha --compilers js:babel-core/register ./test/**/*.spec.js --require ignore-styles"
   },
-  "author": "",
+  "author": "Clement Ferey",
   "license": "MIT",
   "dependencies": {
+    "@jaames/iro": "^3.5.3",
     "axios": "^0.18.0",
     "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",
@@ -26,7 +27,6 @@
     "node-sass": "^4.5.2",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
-    "react-color": "^2.14.1",
     "react-dom": "^15.5.4",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.1",

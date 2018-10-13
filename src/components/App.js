@@ -1,26 +1,31 @@
 import axios from 'axios';
 import React from 'react';
-import PropTypes from 'prop-types';
-import { SketchPicker } from 'react-color';
+import iro from "@jaames/iro";
 
 import '../assets/styles/App.scss';
 
 class App extends React.Component {
 
-  handleChangeComplete(color) {
-    axios.post('/colors', {
-      color: color['rgb']
+  componentDidMount() {
+
+    var demoColorPicker = new iro.ColorPicker("#color-picker-container", {
+      width: 240,
+      height: 240,
+      color: "#f00"
     });
-  };
+
+    demoColorPicker.on("color:change", function(color, changes) {
+      axios.post('/colors', {
+        color: color['rgb']
+      });
+    });
+  }
 
   render() {
     return (
-      <SketchPicker
-        onChangeComplete={this.handleChangeComplete}
-      />
+      <div id="color-picker-container" />
     );
   }
 }
-
 
 export default App;
