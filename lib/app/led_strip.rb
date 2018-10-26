@@ -7,6 +7,7 @@ module LedStrip
   SOCKET_PATH = '/tmp/sock'
 
   def self.send_message(message)
+    logger.info("leds receiving message #{message.inspect}")
     begin
       Socket.unix(SOCKET_PATH).send(message.to_json, 0)
     rescue Errno::ECONNREFUSED, Errno::ENOENT => e

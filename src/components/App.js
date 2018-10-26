@@ -6,6 +6,11 @@ import '../assets/styles/App.scss';
 
 class App extends React.Component {
 
+  constructor(props, context) {
+    super(props, context);
+    this.dimmer = this.dimmer.bind(this)
+  }
+
   componentDidMount() {
 
     var demoColorPicker = new iro.ColorPicker("#color-picker-container", {
@@ -21,9 +26,18 @@ class App extends React.Component {
     });
   }
 
+  dimmer() {
+    axios.post('/modes', {
+      mode: 'dimmer'
+    });
+  }
+
   render() {
     return (
-      <div id="color-picker-container" />
+      <div>
+        <div id="color-picker-container" />
+        <div id="dimmer-button" onClick={this.dimmer}>Dimmer</div>
+      </div>
     );
   }
 }

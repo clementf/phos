@@ -16,7 +16,8 @@ a {
   text-decoration: none;
 }
 
-#color-picker-container {
+#color-picker-container, #dimmer-button {
   display: flex;
   justify-content: center;
+  margin: 2rem 0;
 }

@@ -9,8 +9,6 @@ GEM
     clockwork (2.0.3)
       tzinfo
     concurrent-ruby (1.0.5)
-    foreman (0.85.0)
-      thor (~> 0.19.1)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
     minitest (5.11.3)
@@ -27,7 +25,8 @@ GEM
     sinatra-logger (0.3.2)
       semantic_logger
       sinatra
-    thor (0.19.4)
+    sucker_punch (2.1.1)
+      concurrent-ruby (~> 1.0)
     thread_safe (0.3.6)
     tilt (2.0.7)
     tzinfo (1.2.5)
@@ -39,10 +38,10 @@ PLATFORMS
 DEPENDENCIES
   activesupport
   clockwork
-  foreman
   puma
   sinatra
   sinatra-logger (>= 0.2.6)
+  sucker_punch (~> 2.0)
 
 RUBY VERSION
    ruby 2.5.1p57
