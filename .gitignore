@@ -4,3 +4,4 @@ pids
 *npm-debug.log
 *bundle.js
 log/*.log
+tmp/puma/*
