@@ -35,6 +35,10 @@ class Color
     [@red, @green, @blue].max
   end
 
+  def black?
+    @red.zero? && @green.zero? && @blue.zero?
+  end
+
   def to_s
     "r: #{@red}, g: #{@green}, b: #{@blue}"
   end

@@ -10,6 +10,7 @@ module LedStrip
     logger.info("leds receiving message #{message.inspect}")
     begin
       Socket.unix(SOCKET_PATH).send(message.to_json, 0)
+      true
     rescue Errno::ECONNREFUSED, Errno::ENOENT => e
       logger.error(e.message)
 

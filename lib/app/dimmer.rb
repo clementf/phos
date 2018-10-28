@@ -4,7 +4,7 @@ class Dimmer < Mode
     total_time = 600.0
     sleep_time = total_time / color.max
 
-    while total_time > 0
+    while total_time > 0 && !color.black?
       message = { type: 'color', data: color.to_h }
       LedStrip.send_message(message)
       color = color - 1

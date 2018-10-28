@@ -5,7 +5,7 @@ class ModeController < Phos
     mode = params['mode']
 
     if mode == 'dimmer'
-      Dimmer.perform_async(Color.instance)
+      halt(500) unless Dimmer.perform_async(Color.instance)
     end
   end
 end
