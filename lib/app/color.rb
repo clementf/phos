@@ -4,7 +4,7 @@ class Color
   include Singleton
 
   def initialize
-    color_hash = {'r' => 255, 'g' => 0, 'b' => 0}
+    color_hash = {'r' => 0, 'g' => 0, 'b' => 0}
     @red = color_hash['r']
     @green = color_hash['g']
     @blue = color_hash['b']

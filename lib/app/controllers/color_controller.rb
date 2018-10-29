@@ -8,4 +8,8 @@ class ColorController < Phos
 
     halt(500) unless LedStrip.send_message(message)
   end
+
+  get '/current' do
+    json Color.instance.to_h
+  end
 end

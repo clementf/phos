@@ -12,18 +12,22 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    axios.get('/colors/current')
+      .then(function (response) {
+        const color = response.data;
 
-    var demoColorPicker = new iro.ColorPicker("#color-picker-container", {
-      width: 240,
-      height: 240,
-      color: "#f00"
-    });
+        var demoColorPicker = new iro.ColorPicker("#color-picker-container", {
+          width: 240,
+          height: 240,
+          color: color
+        });
 
-    demoColorPicker.on("color:change", function(color, changes) {
-      axios.post('/colors', {
-        color: color['rgb']
+        demoColorPicker.on("color:change", function(color, changes) {
+          axios.post('/colors', {
+            color: color['rgb']
+          });
+        });
       });
-    });
   }
 
   dimmer() {
