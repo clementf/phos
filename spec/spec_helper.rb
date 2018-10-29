@@ -1,3 +1,9 @@
+require 'simplecov'
+SimpleCov.start do
+  add_filter "/spec/"
+  add_filter "/lib/leds/"
+end
+
 require 'rspec-html-matchers'
 require 'rack/test'
 

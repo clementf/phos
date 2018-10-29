@@ -6,3 +6,4 @@ pids
 log/*.log
 tmp/puma/*
 spec/examples.txt
+coverage
