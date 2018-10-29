@@ -5,3 +5,4 @@ pids
 *bundle.js
 log/*.log
 tmp/puma/*
+spec/examples.txt

@@ -2,7 +2,6 @@
 
 require 'sucker_punch' # has to be before requiring sinatra
 require 'sinatra/base'
-require 'sinatra/json'
 require 'sinatra/logger'
 require 'json'
 
