@@ -3,6 +3,7 @@ pids
 */.DS_Store
 *npm-debug.log
 *bundle.js
+*bundle.js.gz
 log/*.log
 tmp/puma/*
 spec/examples.txt
