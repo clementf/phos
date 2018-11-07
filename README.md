@@ -47,7 +47,7 @@ The test framework is [Rspec](http://rspec.info/). Although test coverage isn't 
 
 The python scripts that talk to the leds have to run as `root` on the raspberry pi.
 
-I recommend using a toold like [procodile](https://github.com/adamcooke/procodile) to run the app in production. Procodile uses a `Procfile`, and is comaprable to [foreman](https://github.com/ddollar/foreman).
+I recommend using a tool like [procodile](https://github.com/adamcooke/procodile) to run the app in production. Procodile uses a `Procfile`, and is comaprable to [foreman](https://github.com/ddollar/foreman).
 
 To start the app, run `sudo procodile start`.
 
