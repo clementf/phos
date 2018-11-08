@@ -1,4 +1,4 @@
-import axios from 'axios';
+import client from './client.js';
 import React from 'react';
 import iro from "@jaames/iro";
 
@@ -12,9 +12,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/colors/current')
+    const reactContext = this
+
+    client.get('/colors/current')
       .then(function (response) {
         const color = response.data;
+        reactContext.setState({ color: color })
 
         var demoColorPicker = new iro.ColorPicker("#color-picker-container", {
           width: 240,
@@ -23,15 +26,18 @@ class App extends React.Component {
         });
 
         demoColorPicker.on("color:change", function(color, changes) {
-          axios.post('/colors', {
-            color: color['rgb']
+          color = color['rgb'];
+          reactContext.setState({ color: color });
+
+          client.post('/colors', {
+            color: color
           });
         });
       });
   }
 
   dimmer() {
-    axios.post('/modes', {
+    client.post('/modes', {
       mode: 'dimmer'
     });
   }

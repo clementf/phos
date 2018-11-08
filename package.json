@@ -4,8 +4,8 @@
   "description": "Control your led strip over the web",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --content-base lib/app/views --hot --inline",
-    "build": "webpack --config webpack.prod.config.js",
+    "dev": "webpack-dev-server --env.API_URL=http://localhost:3000 --content-base lib/app/views --hot --inline",
+    "build": "webpack -p --env.API_URL='' --config webpack.config.js",
     "lint": "eslint src/**",
     "lint:watch": "esw -w src/**",
     "test": "mocha --compilers js:babel-core/register ./test/**/*.spec.js --require ignore-styles"
