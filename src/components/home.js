@@ -1,23 +1,25 @@
-// import client from './client.js';
-// import React from 'react';
-// import iro from "@jaames/iro";
+import React from 'react';
+import { Link } from "react-router-dom";
 
-// import '../assets/styles/app.scss';
+import client from './client.js';
+import iro from "@jaames/iro";
 
-class App extends React.Component {
+import '../assets/styles/app.scss';
+
+class Home extends React.Component {
 
   constructor(props, context) {
     super(props, context);
-    this.dimmer = this.dimmer.bind(this)
+    this.dimmer = this.dimmer.bind(this);
   }
 
   componentDidMount() {
-    const reactContext = this
+    const reactContext = this;
 
     client.get('/colors/current')
       .then(function (response) {
         const color = response.data;
-        reactContext.setState({ color: color })
+        reactContext.setState({ color: color });
 
         var demoColorPicker = new iro.ColorPicker("#color-picker-container", {
           width: 240,
@@ -46,10 +48,11 @@ class App extends React.Component {
     return (
       <div>
         <div id="color-picker-container" />
+        <Link to="/alarms">Alarms</Link>
         <div id="dimmer-button" onClick={this.dimmer}>Dimmer</div>
       </div>
     );
   }
 }
 
-
+export default Home;

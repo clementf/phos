@@ -1,5 +1,5 @@
 class WebsiteController < Phos
-  get '/' do
+  get '/*' do
     render :html, :index
   end
 end

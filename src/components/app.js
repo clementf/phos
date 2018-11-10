@@ -1,8 +1,8 @@
-import client from './client.js';
-import React from 'react';
-import iro from "@jaames/iro";
+// import client from './client.js';
+// import React from 'react';
+// import iro from "@jaames/iro";
 
-import '../assets/styles/app.scss';
+// import '../assets/styles/app.scss';
 
 class App extends React.Component {
 
@@ -52,4 +52,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+
