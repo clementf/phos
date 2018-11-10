@@ -1,0 +1,23 @@
+$dark-color: #171738;
+$light-color: #ffd9ce;
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: $dark-color;
+  color: $light-color;
+  height: 100%;
+  font-family: system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+#color-picker-container, #dimmer-button {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
