@@ -1,5 +1,6 @@
-class ColorController < Phos
+# frozen_string_literal: true
 
+class ColorController < Phos
   post '' do
     params = JSON.parse(@request.body.read)
     color = Color.instance.set_color(params['color'])

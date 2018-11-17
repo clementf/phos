@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 def prod?
   ENV['RACK_ENV'] == 'production'
 end
 
-root = "#{Dir.getwd}"
+root = Dir.getwd.to_s
 
 puma_bind = prod? ? "unix://#{root}/tmp/puma/socket" : 'tcp://0.0.0.0:3000'
 bind puma_bind

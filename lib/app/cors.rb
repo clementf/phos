@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module Sinatra
   module Cors
-
     def self.registered(app)
       app.before do
         response.headers['Access-Control-Allow-Origin'] = '*' unless app.production?

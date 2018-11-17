@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative './lib/app/app'
 
 map('/api/colors') { run ColorController }

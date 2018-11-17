@@ -1,5 +1,6 @@
-class ModeController < Phos
+# frozen_string_literal: true
 
+class ModeController < Phos
   post '' do
     params = JSON.parse(@request.body.read)
     mode = params['mode']

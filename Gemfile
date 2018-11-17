@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 ruby '2.5.1'
@@ -11,8 +13,8 @@ gem 'sinatra', '~> 2.0.4'
 gem 'sinatra-activerecord'
 gem 'sinatra-contrib', '~> 2.0.4'
 gem 'sinatra-logger', '>= 0.2.6'
-gem 'sucker_punch', '~> 2.0'
 gem 'sqlite3'
+gem 'sucker_punch', '~> 2.0'
 
 group :development, :test do
   gem 'awesome_print'
@@ -20,8 +22,8 @@ group :development, :test do
 end
 
 group :test do
+  gem 'rack-test'
   gem 'rspec', '~> 3.8.0'
   gem 'rspec-html-matchers'
-  gem 'rack-test'
   gem 'simplecov'
 end

@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'app/alarm_checker'
 require 'spec_helper'
 
 RSpec.describe AlarmChecker do
-
   let(:alarm_time_monday) { DateTime.now.monday.change(hour: 7, min: 45) }
 
   let(:trigger_time_monday) { alarm_time_monday.change(min: 25) }

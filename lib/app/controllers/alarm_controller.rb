@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AlarmController < Phos
   get '' do
     json Alarm.all.order(id: :asc)

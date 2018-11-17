@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'app/phos'
 require 'app/controllers/website_controller'
 require 'spec_helper'
