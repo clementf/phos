@@ -1,7 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import deepPurple from '@material-ui/core/colors/deepPurple';
 import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
 import TextField from '@material-ui/core/TextField';
@@ -11,51 +9,9 @@ import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
 import update from 'immutability-helper';
 
+import { alarms as styles } from './styles.js';
+import { weekdays, toggleArrayElement } from '../utils.js';
 import client from './client.js';
-
-const weekdays = new Array(7);
-weekdays[0] = 'M';
-weekdays[1] = 'T';
-weekdays[2] = 'W';
-weekdays[3] = 'T';
-weekdays[4] = 'F';
-weekdays[5] = 'S';
-weekdays[6] = 'S';
-
-const styles = {
-  time: {
-    'font-size': '2rem',
-    'line-height': '2rem',
-    color: 'white'
-  },
-  list: {
-    margin: '0',
-    padding: '2rem',
-    'list-style': 'none'
-  },
-  center: {
-    textAlign: 'center'
-  },
-  row: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    margin: '1rem 0'
-  },
-  avatar: {
-    margin: 5,
-    width: 30,
-    height: 30,
-    'font-size': '1em'
-  },
-  activeAvatar: {
-    'background-color': deepPurple[500]
-  },
-  smallButton: {
-    height: 36,
-    width: 36
-  }
-};
 
 class Alarms extends React.Component {
   constructor(props, context) {
@@ -83,45 +39,30 @@ class Alarms extends React.Component {
 
   handleChangeActive = alarmId => event => {
     const alarm = this.findAlarm(alarmId);
-    const index = this.findAlarmIndex(alarmId);
 
     alarm.active = !alarm.active;
-
-    const newState = update(this.state.alarms, { index: { $set: alarm } });
-
-    client.put(`/alarms/${alarm.id}`, alarm);
-    this.setState({ newState });
-  };
-
-  toggleArrayElement = (array, element) => {
-    const index = array.indexOf(element);
-    if (index >= 0) delete array[index];
-    else array.push(element);
-
-    return array;
+    this.updateAlarm(alarm);
   };
 
   handleChangeTime = alarmId => event => {
     const alarm = this.findAlarm(alarmId);
-    const index = this.findAlarmIndex(alarmId);
     [alarm.hour, alarm.min] = event.target.value.split(':');
 
-    const newState = update(this.state.alarms, { index: { $set: alarm } });
-
-    client.put(`/alarms/${alarm.id}`, alarm);
-    this.setState({ newState });
+    this.updateAlarm(alarm);
   };
 
   handleChangeDay = (alarmId, dayIndex) => event => {
     const alarm = this.findAlarm(alarmId);
-    const index = this.findAlarmIndex(alarmId);
 
-    alarm.days = this.toggleArrayElement(alarm.days, dayIndex);
+    alarm.days = toggleArrayElement(alarm.days, dayIndex);
+    this.updateAlarm(alarm);
+  };
 
-    const newState = update(this.state.alarms, { index: { $set: alarm } });
-
-    client.put(`/alarms/${alarm.id}`, alarm);
-    this.setState({ newState });
+  updateAlarm = alarm => {
+    client.put(`/alarms/${alarm.id}`, alarm).then(response => {
+      const newState = update(this.state.alarms, { index: { $set: alarm } });
+      this.setState({ newState });
+    });
   };
 
   handleAddAlarm = () => {
@@ -132,7 +73,7 @@ class Alarms extends React.Component {
       active: true
     };
 
-    client.post(`/alarms`, alarm).then(response => {
+    client.post('/alarms', alarm).then(response => {
       const alarms = update(this.state.alarms, { $push: [response.data] });
       this.setState({ alarms });
     });
@@ -153,11 +94,11 @@ class Alarms extends React.Component {
     const listDays = (alarmId, activeDays) => {
       return weekdays.map((day, dayIndex) => (
         <Avatar
-          key={dayIndex}
-          onClick={this.handleChangeDay(alarmId, dayIndex)}
           className={`${classes.avatar} ${
             activeDays.includes(dayIndex) ? classes.activeAvatar : ''
           }`}
+          key={dayIndex}
+          onClick={this.handleChangeDay(alarmId, dayIndex)}
         >
           {day}
         </Avatar>
@@ -185,11 +126,11 @@ class Alarms extends React.Component {
     const deleteButton = alarmId => {
       return (
         <Button
-          variant="fab"
-          color="secondary"
-          className={classes.smallButton}
           aria-label="Delete"
+          className={classes.smallButton}
+          color="secondary"
           onClick={() => this.handleDeleteAlarm(alarmId)}
+          variant="fab"
         >
           <DeleteIcon />
         </Button>
@@ -202,8 +143,8 @@ class Alarms extends React.Component {
           {time(alarm)}
           <Switch
             checked={alarm.active}
-            onChange={this.handleChangeActive(alarm.id)}
             color="primary"
+            onChange={this.handleChangeActive(alarm.id)}
           />
           {deleteButton(alarm.id)}
         </div>
@@ -216,10 +157,10 @@ class Alarms extends React.Component {
       <div className={classes.center}>
         <ul className={classes.list}>{listAlarms}</ul>
         <Button
-          variant="fab"
-          color="primary"
           aria-label="Add"
+          color="primary"
           onClick={this.handleAddAlarm}
+          variant="fab"
         >
           <AddIcon />
         </Button>
@@ -227,4 +168,5 @@ class Alarms extends React.Component {
     );
   }
 }
+
 export default withStyles(styles)(Alarms);
