@@ -1,6 +1,6 @@
 class AlarmController < Phos
   get '' do
-    json Alarm.all.order(id: :desc)
+    json Alarm.all.order(id: :asc)
   end
 
   post '' do
@@ -21,6 +21,7 @@ class AlarmController < Phos
 
   delete '/:id' do
     Alarm.delete(params[:id])
+    status 204
   end
 
   private

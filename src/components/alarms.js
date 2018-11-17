@@ -7,6 +7,7 @@ import Switch from '@material-ui/core/Switch';
 import TextField from '@material-ui/core/TextField';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
 import update from 'immutability-helper';
 
@@ -37,7 +38,9 @@ const styles = {
   },
   row: {
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    margin: '1rem 0'
   },
   avatar: {
     margin: 5,
@@ -47,6 +50,10 @@ const styles = {
   },
   activeAvatar: {
     'background-color': deepPurple[500]
+  },
+  smallButton: {
+    height: 36,
+    width: 36
   }
 };
 
@@ -131,6 +138,15 @@ class Alarms extends React.Component {
     });
   };
 
+  handleDeleteAlarm = alarmId => {
+    const index = this.findAlarmIndex(alarmId);
+
+    client.delete(`/alarms/${alarmId}`).then(response => {
+      const alarms = update(this.state.alarms, { $splice: [[index, 1]] });
+      this.setState({ alarms });
+    });
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -166,6 +182,20 @@ class Alarms extends React.Component {
       );
     };
 
+    const deleteButton = alarmId => {
+      return (
+        <Button
+          variant="fab"
+          color="secondary"
+          className={classes.smallButton}
+          aria-label="Delete"
+          onClick={() => this.handleDeleteAlarm(alarmId)}
+        >
+          <DeleteIcon />
+        </Button>
+      );
+    };
+
     const listAlarms = this.state.alarms.map((alarm, index) => (
       <li key={alarm.id}>
         <div className={classes.row}>
@@ -175,8 +205,10 @@ class Alarms extends React.Component {
             onChange={this.handleChangeActive(alarm.id)}
             color="primary"
           />
+          {deleteButton(alarm.id)}
         </div>
         <div className={classes.row}>{listDays(alarm.id, alarm.days)}</div>
+        <Divider />
       </li>
     ));
 
