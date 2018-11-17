@@ -1,6 +1,6 @@
 class AlarmController < Phos
   get '' do
-    json Alarm.all.order(updated_at: :desc)
+    json Alarm.all.order(id: :desc)
   end
 
   post '' do
