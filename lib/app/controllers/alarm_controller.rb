@@ -6,7 +6,7 @@ class AlarmController < Phos
   post '' do
     data = HashWithIndifferentAccess.new(JSON.parse(@request.body.read))
 
-    Alarm.create!(alarm_params(data))
+    alarm = Alarm.create!(alarm_params(data))
 
     json alarm
   end

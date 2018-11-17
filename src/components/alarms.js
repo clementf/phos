@@ -2,8 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import deepPurple from '@material-ui/core/colors/deepPurple';
+import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
 import TextField from '@material-ui/core/TextField';
+import AddIcon from '@material-ui/icons/Add';
+import DeleteIcon from '@material-ui/icons/Delete';
 import Avatar from '@material-ui/core/Avatar';
 import update from 'immutability-helper';
 
@@ -25,12 +28,16 @@ const styles = {
     color: 'white'
   },
   list: {
-    margin: '2rem 0',
+    margin: '0',
+    padding: '2rem',
     'list-style': 'none'
+  },
+  center: {
+    textAlign: 'center'
   },
   row: {
     display: 'flex',
-    justifyContent: 'left'
+    justifyContent: 'space-between'
   },
   avatar: {
     margin: 5,
@@ -110,6 +117,20 @@ class Alarms extends React.Component {
     this.setState({ newState });
   };
 
+  handleAddAlarm = () => {
+    const alarm = {
+      hour: 7,
+      min: 0,
+      days: [],
+      active: true
+    };
+
+    client.post(`/alarms`, alarm).then(response => {
+      const alarms = update(this.state.alarms, { $push: [response.data] });
+      this.setState({ alarms });
+    });
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -147,7 +168,7 @@ class Alarms extends React.Component {
 
     const listAlarms = this.state.alarms.map((alarm, index) => (
       <li key={alarm.id}>
-        <div>
+        <div className={classes.row}>
           {time(alarm)}
           <Switch
             checked={alarm.active}
@@ -158,9 +179,18 @@ class Alarms extends React.Component {
         <div className={classes.row}>{listDays(alarm.id, alarm.days)}</div>
       </li>
     ));
+
     return (
-      <div>
+      <div className={classes.center}>
         <ul className={classes.list}>{listAlarms}</ul>
+        <Button
+          variant="fab"
+          color="primary"
+          aria-label="Add"
+          onClick={this.handleAddAlarm}
+        >
+          <AddIcon />
+        </Button>
       </div>
     );
   }
