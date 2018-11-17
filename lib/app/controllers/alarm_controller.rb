@@ -28,7 +28,7 @@ class AlarmController < Phos
   def alarm_params(params)
     {
       time:   Time.new(2000, 1, 1, params[:hour], params[:min], 0),
-      active: params[:active] == 'true',
+      active: params[:active],
       days:   params[:days]
     }
   end
