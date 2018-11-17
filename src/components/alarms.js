@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 import Switch from '@material-ui/core/Switch';
+import TextField from '@material-ui/core/TextField';
 import Avatar from '@material-ui/core/Avatar';
 import update from 'immutability-helper';
 
@@ -18,6 +19,15 @@ weekdays[5] = 'S';
 weekdays[6] = 'S';
 
 const styles = {
+  time: {
+    'font-size': '2rem',
+    'line-height': '2rem',
+    color: 'white'
+  },
+  list: {
+    margin: '2rem 0',
+    'list-style': 'none'
+  },
   row: {
     display: 'flex',
     justifyContent: 'left'
@@ -77,6 +87,17 @@ class Alarms extends React.Component {
     return array;
   };
 
+  handleChangeTime = alarmId => event => {
+    const alarm = this.findAlarm(alarmId);
+    const index = this.findAlarmIndex(alarmId);
+    [alarm.hour, alarm.min] = event.target.value.split(':');
+
+    const newState = update(this.state.alarms, { index: { $set: alarm } });
+
+    client.put(`/alarms/${alarm.id}`, alarm);
+    this.setState({ newState });
+  };
+
   handleChangeDay = (alarmId, dayIndex) => event => {
     const alarm = this.findAlarm(alarmId);
     const index = this.findAlarmIndex(alarmId);
@@ -106,10 +127,28 @@ class Alarms extends React.Component {
       ));
     };
 
+    const time = alarm => {
+      return (
+        <TextField
+          InputLabelProps={{
+            shrink: true
+          }}
+          className={classes.time}
+          defaultValue={`${alarm.hour}:${alarm.min}`}
+          inputProps={{
+            className: classes.time,
+            step: 300 // 5 min
+          }}
+          onChange={this.handleChangeTime(alarm.id)}
+          type="time"
+        />
+      );
+    };
+
     const listAlarms = this.state.alarms.map((alarm, index) => (
       <li key={alarm.id}>
         <div>
-          {`${alarm.hour}:${alarm.min}`}
+          {time(alarm)}
           <Switch
             checked={alarm.active}
             onChange={this.handleChangeActive(alarm.id)}
@@ -121,7 +160,7 @@ class Alarms extends React.Component {
     ));
     return (
       <div>
-        <ul>{listAlarms}</ul>
+        <ul className={classes.list}>{listAlarms}</ul>
       </div>
     );
   }
