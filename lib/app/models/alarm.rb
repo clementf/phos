@@ -14,11 +14,21 @@ class Alarm < ActiveRecord::Base
   private
 
   def sanitize_days
+    compact_days
     dedup_days
+    sort_days
     days.select! { |day| day.between?(0, 6) }
   end
 
   def dedup_days
     days.uniq!
+  end
+
+  def compact_days
+    days.compact!
+  end
+
+  def sort_days
+    days.sort!
   end
 end
