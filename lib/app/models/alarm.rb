@@ -6,8 +6,8 @@ class Alarm < ActiveRecord::Base
 
   def as_json(*)
     super.except('time', 'created_at', 'updated_at').tap do |alarm|
-      alarm['hour'] = time.getlocal.hour
-      alarm['min'] = time.getlocal.min
+      alarm['hour'] = time.getlocal.strftime("%H")
+      alarm['min'] = time.getlocal.strftime("%M")
     end
   end
 
