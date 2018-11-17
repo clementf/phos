@@ -1,13 +1,16 @@
+# frozen_string_literal: true
+
+ENV['RACK_ENV'] = 'test'
+
 require 'simplecov'
 SimpleCov.start do
-  add_filter "/spec/"
-  add_filter "/lib/leds/"
+  add_filter '/spec/'
+  add_filter '/lib/leds/'
 end
 
 require 'rspec-html-matchers'
 require 'rack/test'
-
-ENV['RACK_ENV'] = 'test'
+require 'app/app'
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
@@ -73,7 +76,7 @@ RSpec.configure do |config|
     # Use the documentation formatter for detailed output,
     # unless a formatter has already been configured
     # (e.g. via a command-line flag).
-    config.default_formatter = "doc"
+    config.default_formatter = 'doc'
   end
 
   # Print the 10 slowest examples and example groups at the

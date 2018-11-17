@@ -4,10 +4,16 @@ class Alarm < ActiveRecord::Base
   serialize :days, Array
   before_save :sanitize_days
 
+  def self.with_day_and_time(day:, time:)
+    select do |alarm|
+      alarm.days.include?(day) && alarm.time.hour == time.hour && alarm.time.min == time.min
+    end
+  end
+
   def as_json(*)
     super.except('time', 'created_at', 'updated_at').tap do |alarm|
-      alarm['hour'] = time.getlocal.strftime("%H")
-      alarm['min'] = time.getlocal.strftime("%M")
+      alarm['hour'] = time.getlocal.strftime('%H')
+      alarm['min'] = time.getlocal.strftime('%M')
     end
   end
 
