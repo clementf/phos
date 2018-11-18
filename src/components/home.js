@@ -27,7 +27,7 @@ class Home extends React.Component {
         color: color
       });
 
-      demoColorPicker.on('color:change', function(color, changes) {
+      demoColorPicker.on('input:end', function(color) {
         color = color['rgb'];
         reactContext.setState({ color: color });
 
