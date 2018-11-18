@@ -13,7 +13,7 @@ class AlarmChecker
   def should_wake_up?
     @alarm_finder.where(active: true)
                  .with_day_and_time(
-                   day: (@time.wday - 1) % 6,
+                   day: (@time.wday - 1) % 7,
                    time: @time + ALARM_DURATION
                  ).present?
   end
