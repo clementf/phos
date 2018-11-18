@@ -6,6 +6,7 @@ import iro from '@jaames/iro';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 
+import Notifier, { openSnackbar } from './notifier.js';
 import '../assets/styles/app.scss';
 
 class Home extends React.Component {
@@ -39,9 +40,13 @@ class Home extends React.Component {
   }
 
   dimmer() {
-    client.post('/modes', {
-      mode: 'dimmer'
-    });
+    client
+      .post('/modes', {
+        mode: 'dimmer'
+      })
+      .then(response => {
+        openSnackbar({ message: 'Alright, good night!' });
+      });
   }
 
   render() {
@@ -57,6 +62,7 @@ class Home extends React.Component {
         >
           Dimmer
         </Button>
+        <Notifier />
       </div>
     );
   }
