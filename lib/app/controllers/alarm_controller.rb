@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class AlarmController < Phos
-  get '' do
+  get '/?' do
     json Alarm.all.order(id: :asc)
   end
 
-  post '' do
+  post '/?' do
     data = HashWithIndifferentAccess.new(JSON.parse(@request.body.read))
 
     alarm = Alarm.create!(alarm_params(data))

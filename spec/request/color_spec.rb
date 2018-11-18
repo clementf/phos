@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'app/phos'
-require 'app/color'
-require 'app/controllers/color_controller'
 require 'spec_helper'
 
 RSpec.describe ColorController do
