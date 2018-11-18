@@ -5,6 +5,10 @@ require 'spec_helper'
 RSpec.describe ColorController do
   let(:app) { ColorController.new }
 
+  before do
+    # make sure color is always reset between tests
+    Color = Class.new(Color)
+  end
   context 'No current color is set' do
     let(:response) { get '/current' }
 
