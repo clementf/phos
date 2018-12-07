@@ -7,7 +7,8 @@ RSpec.describe ColorController do
 
   before do
     # make sure color is always reset between tests
-    Color = Class.new(Color)
+    black_color = {'r' => 0, 'g' => 0, 'b' => 0}
+    Color.instance.set_color(black_color)
   end
   context 'No current color is set' do
     let(:response) { get '/current' }
