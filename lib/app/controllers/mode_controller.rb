@@ -7,6 +7,7 @@ class ModeController < Phos
 
     if mode == 'dimmer'
       halt(500) unless Dimmer.perform_async(Color.instance)
+      Event.create!(name: 'dimming')
     end
   end
 end

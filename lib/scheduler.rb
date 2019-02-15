@@ -13,6 +13,7 @@ module Clockwork
     if AlarmChecker.new(Time.now).should_wake_up?
       message = { type: 'wake_up', data: {} }
       ::LedStrip.send_message(message)
+      Event.create!(name: 'waking_up')
     end
   end
 end
