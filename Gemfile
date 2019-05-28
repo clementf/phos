@@ -14,7 +14,7 @@ gem 'sinatra-activerecord'
 gem 'sinatra-contrib', '~> 2.0.5'
 gem 'sinatra-logger', '>= 0.2.6'
 gem 'sqlite3'
-gem 'sucker_punch', '~> 2.0'
+gem 'sucker_punch', '~> 2.1'
 
 group :development, :test do
   gem 'awesome_print'
