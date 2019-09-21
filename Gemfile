@@ -4,8 +4,8 @@ source 'https://rubygems.org'
 
 ruby '2.5.1'
 
-gem 'activerecord', '~> 5.2.3'
-gem 'activesupport', '~> 5.2.3'
+gem 'activerecord', '~> 6.0.0'
+gem 'activesupport', '~> 6.0.0'
 gem 'clockwork'
 gem 'puma', '~> 3.12.0'
 gem 'rake'
