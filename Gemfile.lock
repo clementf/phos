@@ -59,7 +59,7 @@ GEM
     rspec-support (3.8.0)
     semantic_logger (4.3.0)
       concurrent-ruby (~> 1.0)
-    simplecov (0.17.0)
+    simplecov (0.17.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
