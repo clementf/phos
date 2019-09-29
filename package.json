@@ -19,7 +19,7 @@
     "axios": "^0.18.1",
     "enzyme": "^2.8.1",
     "immutability-helper": "^2.8.1",
-    "prop-types": "^15.5.8",
+    "prop-types": "^15.7.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-router": "^4.3.1",
