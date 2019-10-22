@@ -604,9 +604,9 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@jaames/iro@^3.5.3":
-  version "3.5.3"
-  resolved "https://registry.yarnpkg.com/@jaames/iro/-/iro-3.5.3.tgz#76d4e20981a99568051786102f53df57afb0a869"
+"@jaames/iro@^4.5.3":
+  version "4.5.3"
+  resolved "https://registry.yarnpkg.com/@jaames/iro/-/iro-4.5.3.tgz#4fbeabaf119b9f53ef5b88e262dbfc3477fa9e9a"
 
 "@material-ui/core@^3.9.3":
   version "3.9.3"
