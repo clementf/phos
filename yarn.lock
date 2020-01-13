@@ -604,9 +604,16 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@jaames/iro@^3.5.3":
-  version "3.5.3"
-  resolved "https://registry.yarnpkg.com/@jaames/iro/-/iro-3.5.3.tgz#76d4e20981a99568051786102f53df57afb0a869"
+"@irojs/iro-core@0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@irojs/iro-core/-/iro-core-0.0.4.tgz#57a1d5457249e348075d9ca955002a90453bc08d"
+
+"@jaames/iro@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@jaames/iro/-/iro-5.0.0.tgz#df5d1a901ec0898f0e01633343b1273cda71409d"
+  dependencies:
+    "@irojs/iro-core" "0.0.4"
+    preact "^10.0.0"
 
 "@material-ui/core@^3.9.3":
   version "3.9.3"
@@ -5243,6 +5250,10 @@ postcss@^6.0.1, postcss@^6.0.23:
     chalk "^2.4.1"
     source-map "^0.6.1"
     supports-color "^5.4.0"
+
+preact@^10.0.0:
+  version "10.2.1"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-10.2.1.tgz#b30eb4cdc455499ee2ff82e0fa1a16fc8e20f3a4"
 
 prelude-ls@~1.1.2:
   version "1.1.2"
