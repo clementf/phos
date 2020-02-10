@@ -49,6 +49,15 @@ class Home extends React.Component {
       });
   }
 
+  christmas() {
+    client
+      .post('/modes', {
+        mode: 'christmas'
+      })
+      .then(response => {
+        openSnackbar({ message: 'Jingle bells!' });
+      });
+  }
   render() {
     const { classes } = this.props;
 
@@ -62,6 +71,13 @@ class Home extends React.Component {
         >
           Dimmer
         </Button>
+        <Button
+          variant="contained"
+          onClick={this.christmas}
+          className={classes.button}
+        >
+          Christmas theme
+        </Button>
         <Notifier />
       </div>
     );
@@ -71,7 +87,7 @@ class Home extends React.Component {
 const styles = theme => ({
   button: {
     display: 'flex',
-    margin: 'auto'
+    margin: '10px auto'
   }
 });
 export default withStyles(styles)(Home);

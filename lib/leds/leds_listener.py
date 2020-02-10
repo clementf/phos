@@ -6,6 +6,7 @@ import json
 from neopixel import *
 import argparse
 from wakeup import wake_up
+from christmas import christmas
 
 LED_COUNT      = 60      # Number of LED pixels.
 LED_PIN        = 18      # GPIO pin connected to the pixels (18 uses PWM!).
@@ -31,6 +32,8 @@ def process_event(event, strip):
         show_color(strip, event)
     if event_type == 'wake_up':
         wake_up(strip)
+    if event_type == 'christmas':
+        christmas(strip)
 
 sock = "/tmp/sock"
 if os.path.exists(sock):
