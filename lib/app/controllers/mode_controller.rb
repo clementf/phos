@@ -9,5 +9,9 @@ class ModeController < Phos
       halt(500) unless Dimmer.perform_async(Color.instance)
       Event.create!(name: 'dimming')
     end
+
+    if mode == 'christmas'
+      Christmas.perform_async
+    end
   end
 end
