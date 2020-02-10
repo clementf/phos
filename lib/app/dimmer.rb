@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative './mode'
+
 class Dimmer < Mode
   def perform(color)
     logger.info("start dimmer with color #{color}")

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative './mode'
+
 class Christmas < Mode
   def perform
     logger.info("start christmas mode")
