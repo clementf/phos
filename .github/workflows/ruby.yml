@@ -11,10 +11,16 @@ jobs:
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: 2.5.1
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby }}-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby }}-
     - name: Build and test with Rspec
       run: |
         sudo apt-get install libsqlite3-dev
-        gem install bundler
+        bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
         bundle exec rake db:setup
         bundle exec rspec
