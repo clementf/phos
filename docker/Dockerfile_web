@@ -1,0 +1,25 @@
+FROM starefossen/ruby-node
+
+WORKDIR /app
+
+ADD Gemfile .
+ADD Gemfile.lock .
+
+RUN bundle install --without test development
+
+ADD package.json .
+ADD yarn.lock .
+
+RUN yarn
+
+ADD ./lib/app ./lib/app
+ADD ./db ./db
+
+ADD ./Rakefile ./
+
+ADD ./src /app/
+
+ADD ./config ./config
+ADD ./config.ru .
+
+CMD RACK_ENV=production bundle exec puma --config config/puma.rb

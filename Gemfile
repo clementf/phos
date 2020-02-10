@@ -13,12 +13,16 @@ gem 'sinatra', '~> 2.0.5'
 gem 'sinatra-activerecord'
 gem 'sinatra-contrib', '~> 2.0.5'
 gem 'sinatra-logger', '>= 0.2.6'
-gem 'sqlite3'
 gem 'sucker_punch', '~> 2.1'
+
+group :production do
+  gem 'pg'
+end
 
 group :development, :test do
   gem 'awesome_print'
   gem 'pry'
+  gem 'sqlite3'
 end
 
 group :test do

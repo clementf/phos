@@ -6,10 +6,14 @@ end
 
 root = Dir.getwd.to_s
 
-puma_bind = prod? ? "unix://#{root}/tmp/puma/socket" : 'tcp://0.0.0.0:3000'
+tmp = File.join(root, 'tmp', 'puma')
+FileUtils.mkdir_p(tmp) unless File.exist?(tmp)
+
+puma_bind = 'tcp://0.0.0.0:3000'
 bind puma_bind
-pidfile "#{root}/tmp/puma/pid"
-state_path "#{root}/tmp/puma/state"
+
+pidfile = File.join(tmp, 'puma')
+state_path = File.join(tmp, 'state')
 rackup "#{root}/config.ru"
 
 threads 4, 8

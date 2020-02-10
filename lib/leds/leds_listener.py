@@ -49,7 +49,7 @@ try:
         process_event(datagram, strip)
 
 finally:
-    print "Shutting down..."
+    print("Shutting down...")
     server.close()
     os.remove(sock)
 

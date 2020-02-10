@@ -1,0 +1,18 @@
+FROM ruby:2.5.1
+
+WORKDIR /app
+
+ADD Gemfile .
+ADD Gemfile.lock .
+
+RUN bundle install --without test development
+
+ADD ./lib/app ./lib/app
+ADD ./lib/scheduler.rb ./lib
+ADD ./db ./db
+
+ADD ./Rakefile ./
+
+ADD ./config ./config
+
+CMD bundle exec clockwork lib/scheduler.rb
