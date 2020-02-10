@@ -9,3 +9,4 @@ tmp/puma/*
 spec/examples.txt
 coverage
 db/*.sqlite3
+tmp
