@@ -6,11 +6,11 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
-    container:
-      image: ruby:2.5.1
     steps:
     - uses: actions/checkout@v1
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.5.1
     - name: Build and test with Rspec
       run: |
         gem install bundler
