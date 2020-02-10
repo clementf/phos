@@ -1,3 +1,5 @@
+![Ruby](https://github.com/clementf/phos/workflows/Ruby/badge.svg)
+
 # Phos
 
 Phos provides an interface to control a strip of leds connected to a Raspberry pi, typically a NeoPixels setup as seen [here](https://dordnung.de/raspberrypi-ledstrip/ws2812).
