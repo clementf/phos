@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
 import Switch from '@material-ui/core/Switch';
 import TextField from '@material-ui/core/TextField';
 import AddIcon from '@material-ui/icons/Add';
@@ -129,15 +129,14 @@ class Alarms extends React.Component {
 
     const deleteButton = alarmId => {
       return (
-        <Button
+        <Fab
           aria-label="Delete"
           className={classes.smallButton}
           color="secondary"
           onClick={() => this.handleDeleteAlarm(alarmId)}
-          variant="fab"
         >
           <DeleteIcon />
-        </Button>
+        </Fab>
       );
     };
 
@@ -160,14 +159,14 @@ class Alarms extends React.Component {
     return (
       <div className={classes.center}>
         <ul className={classes.list}>{listAlarms}</ul>
-        <Button
+        <Fab
           aria-label="Add"
           color="primary"
           onClick={this.handleAddAlarm}
           variant="fab"
         >
           <AddIcon />
-        </Button>
+        </Fab>
         <Notifier />
       </div>
     );
