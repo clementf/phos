@@ -40,6 +40,9 @@ Build the frontend dependencies with `npm run build` or `yarn build`.
 
 Get the app running with: `procodile start --dev`.
 
+## Run in dev mode
+`yarn dev` and `bundle exec puma --config config/puma.rb`
+
 ## Tests
 
 The test framework is [Rspec](http://rspec.info/). Although test coverage isn't good yet, tests run using `rspec`
