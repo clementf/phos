@@ -23,7 +23,7 @@ end
 
 group :test do
   gem 'rack-test'
-  gem 'rspec', '~> 3.8.0'
+  gem 'rspec', '~> 3.9.0'
   gem 'rspec-html-matchers'
   gem 'simplecov'
 end
