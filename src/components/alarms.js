@@ -8,6 +8,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
 import update from 'immutability-helper';
+import Notifier, { openSnackbar } from './notifier.js';
 
 import { alarms as styles } from './styles.js';
 import { weekdays, toggleArrayElement } from '../utils.js';
@@ -60,6 +61,7 @@ class Alarms extends React.Component {
 
   updateAlarm = alarm => {
     client.put(`/alarms/${alarm.id}`, alarm).then(response => {
+      openSnackbar({ message: 'Alarm updated' });
       const newState = update(this.state.alarms, { index: { $set: alarm } });
       this.setState({ newState });
     });
@@ -74,6 +76,7 @@ class Alarms extends React.Component {
     };
 
     client.post('/alarms', alarm).then(response => {
+      openSnackbar({ message: 'Alarm added' });
       const alarms = update(this.state.alarms, { $push: [response.data] });
       this.setState({ alarms });
     });
@@ -83,6 +86,7 @@ class Alarms extends React.Component {
     const index = this.findAlarmIndex(alarmId);
 
     client.delete(`/alarms/${alarmId}`).then(response => {
+      openSnackbar({ message: 'Alarm deleted' });
       const alarms = update(this.state.alarms, { $splice: [[index, 1]] });
       this.setState({ alarms });
     });
@@ -164,6 +168,7 @@ class Alarms extends React.Component {
         >
           <AddIcon />
         </Button>
+        <Notifier />
       </div>
     );
   }
