@@ -43,22 +43,22 @@ GEM
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rake (13.0.1)
-    rspec (3.8.0)
-      rspec-core (~> 3.8.0)
-      rspec-expectations (~> 3.8.0)
-      rspec-mocks (~> 3.8.0)
-    rspec-core (3.8.2)
-      rspec-support (~> 3.8.0)
-    rspec-expectations (3.8.6)
+    rspec (3.9.0)
+      rspec-core (~> 3.9.0)
+      rspec-expectations (~> 3.9.0)
+      rspec-mocks (~> 3.9.0)
+    rspec-core (3.9.1)
+      rspec-support (~> 3.9.1)
+    rspec-expectations (3.9.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.8.0)
+      rspec-support (~> 3.9.0)
     rspec-html-matchers (0.9.2)
       nokogiri (~> 1)
       rspec (>= 3.0.0.a, < 4)
-    rspec-mocks (3.8.2)
+    rspec-mocks (3.9.1)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.8.0)
-    rspec-support (3.8.3)
+      rspec-support (~> 3.9.0)
+    rspec-support (3.9.2)
     ruby2_keywords (0.0.2)
     semantic_logger (4.6.1)
       concurrent-ruby (~> 1.0)
@@ -97,15 +97,15 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord (~> 6.0.0)
-  activesupport (~> 6.0.0)
+  activerecord
+  activesupport
   awesome_print
   clockwork
   pry
   puma
   rack-test
   rake
-  rspec (~> 3.8.0)
+  rspec
   rspec-html-matchers
   simplecov
   sinatra

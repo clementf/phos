@@ -4,8 +4,8 @@ source 'https://rubygems.org'
 
 ruby '2.5.1'
 
-gem 'activerecord', '~> 6.0.0'
-gem 'activesupport', '~> 6.0.0'
+gem 'activerecord'
+gem 'activesupport'
 gem 'clockwork'
 gem 'puma'
 gem 'rake'
@@ -23,7 +23,7 @@ end
 
 group :test do
   gem 'rack-test'
-  gem 'rspec', '~> 3.8.0'
+  gem 'rspec'
   gem 'rspec-html-matchers'
   gem 'simplecov'
 end
