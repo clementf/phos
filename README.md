@@ -34,6 +34,21 @@ bundle install
 
 `yarn` or `npm install`
 
+- Install pip 
+
+`sudo apt install python-pip`
+
+- Install neo pixels
+
+`sudo pip install rpi_ws281x`
+
+- Create puma tmp dir
+`mkdir -p tmp/puma`
+
+- Create database
+
+`rake db:setup`
+
 
 ## Run
 Build the frontend dependencies with `npm run build` or `yarn build`.
@@ -54,7 +69,11 @@ The python scripts that talk to the leds have to run as `root` on the raspberry 
 
 I recommend using a tool like [procodile](https://github.com/adamcooke/procodile) to run the app in production. Procodile uses a `Procfile`, and is comaprable to [foreman](https://github.com/ddollar/foreman).
 
+
+For puma to bind on a local socket (which goes together with the nginx config supplied at `config/nginx.conf`), you should set the env variable `RACK_ENV=production`
+
 To start the app, run `sudo procodile start`.
+
 
 ## Built With
 
