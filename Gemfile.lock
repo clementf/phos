@@ -87,7 +87,7 @@ GEM
       semantic_logger
       sinatra
     sqlite3 (1.4.2)
-    sucker_punch (2.1.2)
+    sucker_punch (3.0.1)
       concurrent-ruby (~> 1.0)
     tilt (2.0.10)
     tzinfo (2.0.4)
