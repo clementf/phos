@@ -1,0 +1,70 @@
+version: 2
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: monthly
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: activesupport
+    versions:
+    - 6.1.1
+  - dependency-name: simplecov
+    versions:
+    - 0.21.2
+  - dependency-name: nokogiri
+    versions:
+    - 1.11.1
+  - dependency-name: rake
+    versions:
+    - 13.0.3
+  - dependency-name: puma
+    versions:
+    - 5.1.1
+  - dependency-name: rspec
+    versions:
+    - 3.10.0
+  - dependency-name: sinatra-activerecord
+    versions:
+    - 2.0.21
+  - dependency-name: rspec-html-matchers
+    versions:
+    - 0.9.4
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: monthly
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: eslint
+    versions:
+    - 7.18.0
+    - 7.19.0
+  - dependency-name: css-loader
+    versions:
+    - 5.0.1
+  - dependency-name: webpack-cli
+    versions:
+    - 4.3.1
+    - 4.4.0
+  - dependency-name: sass-loader
+    versions:
+    - 10.1.1
+  - dependency-name: eslint-plugin-react
+    versions:
+    - 7.22.0
+  - dependency-name: "@babel/preset-env"
+    versions:
+    - 7.12.11
+  - dependency-name: "@babel/preset-react"
+    versions:
+    - 7.12.10
+  - dependency-name: compression-webpack-plugin
+    versions:
+    - 6.1.1
+  - dependency-name: expect
+    versions:
+    - 26.6.2
+  - dependency-name: react
+    versions:
+    - 16.14.0
