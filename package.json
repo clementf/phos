@@ -37,7 +37,7 @@
     "babel-loader": "^8.1.0",
     "babel-preset-env": "^1.7.0",
     "compression-webpack-plugin": "^6.0.2",
-    "css-loader": "^4.3.0",
+    "css-loader": "^5.2.4",
     "eslint": "^7.10.0",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-jsx-a11y": "^6.3.1",
